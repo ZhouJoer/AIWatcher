@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI风险观察仪表盘</title>
+  <style>
+    :root {
+      --text: #172033;
+      --muted: #64748b;
+      --line: #d8dee9;
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --green: #16a34a;
+      --yellow: #ca8a04;
+      --orange: #ea580c;
+      --red: #dc2626;
+      --teal: #0f766e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "Noto Sans SC", "PingFang SC", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 34px 42px;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+    header p {
+      margin: 4px 0;
+      color: #cbd5e1;
+      max-width: 980px;
+    }
+    main { padding: 26px 42px 42px; }
+    .overall {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 22px;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+    .gauge {
+      height: 150px;
+      border: 10px solid var(--line);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: #fff;
+    }
+    .gauge .num { font-size: 42px; font-weight: 700; }
+    .gauge .label { color: var(--muted); }
+    h2 { margin: 26px 0 12px; font-size: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+    }
+    .card h3 { margin: 0; font-size: 15px; }
+    .card p { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+    .pill {
+      padding: 3px 8px;
+      color: white;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .green { background: var(--green); }
+    .yellow { background: var(--yellow); }
+    .orange { background: var(--orange); }
+    .red { background: var(--red); }
+    .bar {
+      width: 100%;
+      height: 9px;
+      background: #e5e7eb;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .bar-fill { height: 100%; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-size: 13px;
+    }
+    th {
+      background: var(--teal);
+      color: white;
+      text-align: left;
+      padding: 9px;
+      font-weight: 600;
+    }
+    td {
+      border-top: 1px solid var(--line);
+      padding: 9px;
+      vertical-align: top;
+    }
+    td span { color: var(--muted); font-size: 12px; }
+    td.score {
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      min-width: 70px;
+    }
+    .note {
+      background: #ecfeff;
+      border-left: 4px solid var(--teal);
+      padding: 12px 14px;
+      margin-top: 14px;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI风险观察仪表盘</h1>
+    <p>AI技术长期真实，但短中期资产定价和资本开支存在泡沫化风险。核心问题是应用端现金流能否支付上游芯片、数据中心、电力、折旧和融资成本。</p>
+    <p>数据日期：2026-06-08 · 仪表盘生成：2026-06-08 16:12</p>
+  </header>
+  <main>
+    <section class="overall">
+      <div class="gauge">
+        <div>
+          <div class="num">67.8</div>
+          <div class="label">总风险 · 橙灯</div>
+        </div>
+      </div>
+      <div>
+        <h2>当前判断</h2>
+        <p>0-39=绿灯，40-59=黄灯，60-74=橙灯，75-100=红灯。分数越高，泡沫和回撤风险越高。</p>
+        <div class="note">最值得盯的组合：企业ROI不清 + 模型API价格战 + 云capex下调 + GPU租赁价格下跌 + Nvidia或上游订单放缓。</div>
+      </div>
+    </section>
+    <h2>分层风险值</h2>
+    <section class="grid">
+      
+            <section class="card">
+              <div class="card-top">
+                <h3>应用端ROI</h3>
+                <span class="pill yellow">58.0 · 黄灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill yellow" style="width: 58.0%"></div>
+    </div>
+    
+              <p>权重 18% · 指标 2 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>云与资本开支</h3>
+                <span class="pill red">83.5 · 红灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill red" style="width: 83.5%"></div>
+    </div>
+    
+              <p>权重 18% · 指标 2 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>模型经济性</h3>
+                <span class="pill orange">69.0 · 橙灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill orange" style="width: 69.0%"></div>
+    </div>
+    
+              <p>权重 14% · 指标 2 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>GPU与半导体</h3>
+                <span class="pill yellow">57.5 · 黄灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill yellow" style="width: 57.5%"></div>
+    </div>
+    
+              <p>权重 12% · 指标 2 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>数据中心与电力</h3>
+                <span class="pill orange">66.0 · 橙灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill orange" style="width: 66.0%"></div>
+    </div>
+    
+              <p>权重 10% · 指标 2 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>融资与私募估值</h3>
+                <span class="pill red">76.0 · 红灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill red" style="width: 76.0%"></div>
+    </div>
+    
+              <p>权重 10% · 指标 2 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>市场集中度</h3>
+                <span class="pill red">78.0 · 红灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill red" style="width: 78.0%"></div>
+    </div>
+    
+              <p>权重 8% · 指标 1 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>竞争与商品化</h3>
+                <span class="pill yellow">52.0 · 黄灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill yellow" style="width: 52.0%"></div>
+    </div>
+    
+              <p>权重 5% · 指标 1 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>宏观流动性</h3>
+                <span class="pill orange">62.0 · 橙灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill orange" style="width: 62.0%"></div>
+    </div>
+    
+              <p>权重 3% · 指标 1 个</p>
+            </section>
+            
+            <section class="card">
+              <div class="card-top">
+                <h3>监管与法律</h3>
+                <span class="pill yellow">42.0 · 黄灯</span>
+              </div>
+              
+    <div class="bar">
+      <div class="bar-fill yellow" style="width: 42.0%"></div>
+    </div>
+    
+              <p>权重 2% · 指标 1 个</p>
+            </section>
+            
+    </section>
+    <h2>指标明细</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>层级</th>
+          <th>指标与当前读数</th>
+          <th>风险值</th>
+          <th>趋势</th>
+          <th>频率</th>
+          <th>危险信号</th>
+          <th>建议来源</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+            <tr>
+              <td>GPU与半导体</td>
+              <td><strong>GPU交付周期与租赁价格</strong><br><span>上游需求仍强，但若交付周期明显缩短、云GPU租价持续下跌，要警惕供需转向。</span></td>
+              <td class="score yellow">58<br>黄灯</td>
+              <td>观察中</td>
+              <td>月度</td>
+              <td>高端GPU现货化；租赁价格连续下跌；二手GPU供给增加</td>
+              <td>云GPU报价；neocloud报价；渠道调研；二手GPU市场</td>
+            </tr>
+            
+            <tr>
+              <td>GPU与半导体</td>
+              <td><strong>Nvidia数据中心收入与客户集中度</strong><br><span>Nvidia最新季度收入和数据中心收入仍大幅增长，短期需求强劲；但它通常滞后于应用端和云capex变化，客户集中度仍需观察。</span></td>
+              <td class="score yellow">57<br>黄灯</td>
+              <td>观察中</td>
+              <td>季度</td>
+              <td>收入指引低于预期；大客户砍单；库存和应收账款快于收入增长</td>
+              <td>Nvidia财报；Broadcom财报；TSMC财报；内存厂财报</td>
+            </tr>
+            
+            <tr>
+              <td>云与资本开支</td>
+              <td><strong>Hyperscaler capex/revenue</strong><br><span>云厂商AI资本开支处于极高强度。Microsoft、Alphabet、Amazon、Meta的2026 capex指引合计约7000亿美元以上，最大风险是capex增速长期跑赢云收入增速。</span></td>
+              <td class="score red">85<br>红灯</td>
+              <td>风险上升</td>
+              <td>季度</td>
+              <td>capex继续上调但云收入不加速；自由现金流被压缩；折旧压力上升</td>
+              <td>Microsoft；Amazon；Alphabet；Meta；Oracle财报</td>
+            </tr>
+            
+            <tr>
+              <td>云与资本开支</td>
+              <td><strong>capex指引变化</strong><br><span>当前仍是加码阶段，且Alphabet已通过大规模融资支持AI基础设施。若头部云厂商首次下调下一年度capex，可能是关键拐点。</span></td>
+              <td class="score red">82<br>红灯</td>
+              <td>风险上升</td>
+              <td>季度</td>
+              <td>优化资本开支；重新评估建设节奏；延后数据中心项目；需求正常化</td>
+              <td>财报电话会；10-Q；10-K；投资者日</td>
+            </tr>
+            
+            <tr>
+              <td>宏观流动性</td>
+              <td><strong>利率、美元和信用利差</strong><br><span>高利率会提高远期现金流折现率，也会压缩数据中心、设备融资和高估值成长股。</span></td>
+              <td class="score orange">62<br>橙灯</td>
+              <td>观察中</td>
+              <td>月度</td>
+              <td>长端利率上行；信用利差扩大；成长股估值倍数压缩</td>
+              <td>FRED；Treasury yields；ICE BofA spreads；金融条件指数</td>
+            </tr>
+            
+            <tr>
+              <td>市场集中度</td>
+              <td><strong>Mag 7与AI链条权重</strong><br><span>指数对少数AI相关巨头依赖很高。集中度本身不必然崩盘，但会放大回撤。</span></td>
+              <td class="score red">78<br>红灯</td>
+              <td>风险上升</td>
+              <td>周度</td>
+              <td>指数上涨但市场宽度下降；AI链条相关性上升；非科技盈利扩散失败</td>
+              <td>S&amp;P 500 factsheet；Wilshire 5000；Buffett Indicator；市场宽度指标</td>
+            </tr>
+            
+            <tr>
+              <td>应用端ROI</td>
+              <td><strong>企业AI续费率与席位净扩张</strong><br><span>企业采用广泛，但组织级财务影响仍不均衡。NBER调查显示多数企业尚未看到就业或生产率影响，重点看从试点到正式预算的转化。</span></td>
+              <td class="score orange">60<br>橙灯</td>
+              <td>观察中</td>
+              <td>季度</td>
+              <td>续费率下降；席位缩减；AI项目从经营预算退回创新预算</td>
+              <td>McKinsey State of AI；Stanford AI Index；CIO survey；SaaS公司财报</td>
+            </tr>
+            
+            <tr>
+              <td>应用端ROI</td>
+              <td><strong>AI功能独立付费能力</strong><br><span>部分AI功能可升档收费，但也存在被免费捆绑以防流失的压力。</span></td>
+              <td class="score yellow">56<br>黄灯</td>
+              <td>观察中</td>
+              <td>季度</td>
+              <td>AI add-on降价；AI功能免费打包；客户只使用低价或免费版本</td>
+              <td>Microsoft 365；Google Workspace；Salesforce；Adobe；ServiceNow</td>
+            </tr>
+            
+            <tr>
+              <td>数据中心与电力</td>
+              <td><strong>数据中心项目与上电节奏</strong><br><span>电力、土地、冷却和并网正在成为硬约束。需求不足导致的项目延期是红色信号。</span></td>
+              <td class="score orange">69<br>橙灯</td>
+              <td>风险上升</td>
+              <td>月度</td>
+              <td>项目取消；空置率上升；预租率下降；上电延期伴随客户撤单</td>
+              <td>CBRE；JLL；Data Center Dynamics；电力公司并网队列</td>
+            </tr>
+            
+            <tr>
+              <td>数据中心与电力</td>
+              <td><strong>长期PPA与项目融资</strong><br><span>长期购电和项目债提高固定成本。若推理需求不达预期，电力合同可能变成负担。</span></td>
+              <td class="score orange">63<br>橙灯</td>
+              <td>观察中</td>
+              <td>季度</td>
+              <td>高价长期购电；项目债利差扩大；数据中心REIT融资变贵</td>
+              <td>PPA公告；REIT财报；信用市场数据</td>
+            </tr>
+            
+            <tr>
+              <td>模型经济性</td>
+              <td><strong>模型公司ARR与毛利率</strong><br><span>前沿模型公司收入高速增长，但推理成本、训练成本和现金消耗仍是最大不确定性。</span></td>
+              <td class="score orange">72<br>橙灯</td>
+              <td>风险上升</td>
+              <td>季度</td>
+              <td>ARR增速下滑；毛利率恶化；亏损扩大快于收入增长</td>
+              <td>OpenAI；Anthropic；xAI；Reuters；The Information；PitchBook</td>
+            </tr>
+            
+            <tr>
+              <td>模型经济性</td>
+              <td><strong>API价格战与单位推理成本</strong><br><span>模型能力扩散和开源竞争会压低API价格。关键是成本下降能否快于价格下降。</span></td>
+              <td class="score orange">66<br>橙灯</td>
+              <td>风险上升</td>
+              <td>月度</td>
+              <td>主流模型连续降价；用量增长但收入不增长；高端模型被小模型替代</td>
+              <td>OpenAI pricing；Anthropic pricing；Google AI pricing；开源模型榜单</td>
+            </tr>
+            
+            <tr>
+              <td>监管与法律</td>
+              <td><strong>版权、隐私、反垄断和出口管制</strong><br><span>监管尚不是当前主要导火索，但可能改变训练数据成本、模型分发和芯片供应。</span></td>
+              <td class="score yellow">42<br>黄灯</td>
+              <td>观察中</td>
+              <td>月度</td>
+              <td>训练数据诉讼败诉；跨境数据限制；芯片出口管制升级；平台反垄断处罚</td>
+              <td>法院文件；监管机构公告；BIS出口管制；欧盟AI法案执行动态</td>
+            </tr>
+            
+            <tr>
+              <td>竞争与商品化</td>
+              <td><strong>开源与小模型替代压力</strong><br><span>技术进步可能同时扩大应用和压低价格。若企业用低价模型替代前沿API，闭源模型利润池承压。</span></td>
+              <td class="score yellow">52<br>黄灯</td>
+              <td>观察中</td>
+              <td>月度</td>
+              <td>开源模型逼近闭源；企业迁移到本地小模型；多模型平台降低切换成本</td>
+              <td>LMSYS；Hugging Face；GitHub；企业AI架构案例</td>
+            </tr>
+            
+            <tr>
+              <td>融资与私募估值</td>
+              <td><strong>前沿模型公司估值/收入倍数</strong><br><span>私募估值高度集中在少数模型公司。估值跳涨若快于毛利和现金流改善，风险上升。</span></td>
+              <td class="score red">80<br>红灯</td>
+              <td>风险上升</td>
+              <td>月度</td>
+              <td>高PS融资；二级折价扩大；结构化融资条款复杂化</td>
+              <td>PitchBook；S&amp;P Global Market Intelligence；Reuters；Axios</td>
+            </tr>
+            
+            <tr>
+              <td>融资与私募估值</td>
+              <td><strong>GPU抵押和影子杠杆</strong><br><span>GPU集群、云承诺和项目融资可能形成隐性负债。需求放缓时会放大压力。</span></td>
+              <td class="score orange">72<br>橙灯</td>
+              <td>风险上升</td>
+              <td>季度</td>
+              <td>设备融资收紧；抵押品折价；债务展期困难；acqui-hire增加</td>
+              <td>私募信贷报告；公司融资公告；破产和重组新闻</td>
+            </tr>
+            
+      </tbody>
+    </table>
+    <footer>说明：本仪表盘是风险观察工具，不构成投资建议。请结合最新财报、市场价格和宏观环境更新分数。</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+name: Render AI risk dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 01:00 UTC = 09:00 Beijing time.
+    - cron: "0 1 * * 1"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Render dashboard
+        run: python tools/ai_risk_dashboard.py
+
+      - name: Upload rendered dashboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-risk-dashboard
+          path: |
+            output/ai_risk_dashboard.html
+            output/ai_risk_dashboard.md

@@ -1,0 +1,186 @@
+{
+  "metadata": {
+    "title": "AI风险观察仪表盘",
+    "as_of": "2026-06-08",
+    "baseline_as_of": "2026-06-08",
+    "baseline_overall_risk": 67.8,
+    "baseline_status": "橙灯",
+    "scoring_note": "0-39=绿灯，40-59=黄灯，60-74=橙灯，75-100=红灯。分数越高，泡沫和回撤风险越高。",
+    "thesis": "AI技术长期真实，但短中期资产定价和资本开支存在泡沫化风险。核心问题是应用端现金流能否支付上游芯片、数据中心、电力、折旧和融资成本。",
+    "baseline_summary": "截至2026-06-08，AI风险基准定为橙灯偏高。最突出的风险不是技术无效，而是资本开支、私募估值和市场集中度已经提前资本化了很高的未来兑现率。应用端ROI仍未大面积进入组织级利润，云厂商capex处于历史极高强度；但Nvidia数据中心收入和毛利仍强，说明上游需求尚未失速。"
+  },
+  "layer_weights": {
+    "应用端ROI": 18,
+    "模型经济性": 14,
+    "云与资本开支": 18,
+    "GPU与半导体": 12,
+    "数据中心与电力": 10,
+    "融资与私募估值": 10,
+    "市场集中度": 8,
+    "竞争与商品化": 5,
+    "宏观流动性": 3,
+    "监管与法律": 2
+  },
+  "indicators": [
+    {
+      "layer": "应用端ROI",
+      "name": "企业AI续费率与席位净扩张",
+      "score": 60,
+      "trend": "watch",
+      "cadence": "季度",
+      "current_read": "企业采用广泛，但组织级财务影响仍不均衡。NBER调查显示多数企业尚未看到就业或生产率影响，重点看从试点到正式预算的转化。",
+      "watch_signals": ["续费率下降", "席位缩减", "AI项目从经营预算退回创新预算"],
+      "source_suggestions": ["McKinsey State of AI", "Stanford AI Index", "CIO survey", "SaaS公司财报"]
+    },
+    {
+      "layer": "应用端ROI",
+      "name": "AI功能独立付费能力",
+      "score": 56,
+      "trend": "watch",
+      "cadence": "季度",
+      "current_read": "部分AI功能可升档收费，但也存在被免费捆绑以防流失的压力。",
+      "watch_signals": ["AI add-on降价", "AI功能免费打包", "客户只使用低价或免费版本"],
+      "source_suggestions": ["Microsoft 365", "Google Workspace", "Salesforce", "Adobe", "ServiceNow"]
+    },
+    {
+      "layer": "模型经济性",
+      "name": "模型公司ARR与毛利率",
+      "score": 72,
+      "trend": "up",
+      "cadence": "季度",
+      "current_read": "前沿模型公司收入高速增长，但推理成本、训练成本和现金消耗仍是最大不确定性。",
+      "watch_signals": ["ARR增速下滑", "毛利率恶化", "亏损扩大快于收入增长"],
+      "source_suggestions": ["OpenAI", "Anthropic", "xAI", "Reuters", "The Information", "PitchBook"]
+    },
+    {
+      "layer": "模型经济性",
+      "name": "API价格战与单位推理成本",
+      "score": 66,
+      "trend": "up",
+      "cadence": "月度",
+      "current_read": "模型能力扩散和开源竞争会压低API价格。关键是成本下降能否快于价格下降。",
+      "watch_signals": ["主流模型连续降价", "用量增长但收入不增长", "高端模型被小模型替代"],
+      "source_suggestions": ["OpenAI pricing", "Anthropic pricing", "Google AI pricing", "开源模型榜单"]
+    },
+    {
+      "layer": "云与资本开支",
+      "name": "Hyperscaler capex/revenue",
+      "score": 85,
+      "trend": "up",
+      "cadence": "季度",
+      "current_read": "云厂商AI资本开支处于极高强度。Microsoft、Alphabet、Amazon、Meta的2026 capex指引合计约7000亿美元以上，最大风险是capex增速长期跑赢云收入增速。",
+      "watch_signals": ["capex继续上调但云收入不加速", "自由现金流被压缩", "折旧压力上升"],
+      "source_suggestions": ["Microsoft", "Amazon", "Alphabet", "Meta", "Oracle财报"]
+    },
+    {
+      "layer": "云与资本开支",
+      "name": "capex指引变化",
+      "score": 82,
+      "trend": "up",
+      "cadence": "季度",
+      "current_read": "当前仍是加码阶段，且Alphabet已通过大规模融资支持AI基础设施。若头部云厂商首次下调下一年度capex，可能是关键拐点。",
+      "watch_signals": ["优化资本开支", "重新评估建设节奏", "延后数据中心项目", "需求正常化"],
+      "source_suggestions": ["财报电话会", "10-Q", "10-K", "投资者日"]
+    },
+    {
+      "layer": "GPU与半导体",
+      "name": "GPU交付周期与租赁价格",
+      "score": 58,
+      "trend": "watch",
+      "cadence": "月度",
+      "current_read": "上游需求仍强，但若交付周期明显缩短、云GPU租价持续下跌，要警惕供需转向。",
+      "watch_signals": ["高端GPU现货化", "租赁价格连续下跌", "二手GPU供给增加"],
+      "source_suggestions": ["云GPU报价", "neocloud报价", "渠道调研", "二手GPU市场"]
+    },
+    {
+      "layer": "GPU与半导体",
+      "name": "Nvidia数据中心收入与客户集中度",
+      "score": 57,
+      "trend": "watch",
+      "cadence": "季度",
+      "current_read": "Nvidia最新季度收入和数据中心收入仍大幅增长，短期需求强劲；但它通常滞后于应用端和云capex变化，客户集中度仍需观察。",
+      "watch_signals": ["收入指引低于预期", "大客户砍单", "库存和应收账款快于收入增长"],
+      "source_suggestions": ["Nvidia财报", "Broadcom财报", "TSMC财报", "内存厂财报"]
+    },
+    {
+      "layer": "数据中心与电力",
+      "name": "数据中心项目与上电节奏",
+      "score": 69,
+      "trend": "up",
+      "cadence": "月度",
+      "current_read": "电力、土地、冷却和并网正在成为硬约束。需求不足导致的项目延期是红色信号。",
+      "watch_signals": ["项目取消", "空置率上升", "预租率下降", "上电延期伴随客户撤单"],
+      "source_suggestions": ["CBRE", "JLL", "Data Center Dynamics", "电力公司并网队列"]
+    },
+    {
+      "layer": "数据中心与电力",
+      "name": "长期PPA与项目融资",
+      "score": 63,
+      "trend": "watch",
+      "cadence": "季度",
+      "current_read": "长期购电和项目债提高固定成本。若推理需求不达预期，电力合同可能变成负担。",
+      "watch_signals": ["高价长期购电", "项目债利差扩大", "数据中心REIT融资变贵"],
+      "source_suggestions": ["PPA公告", "REIT财报", "信用市场数据"]
+    },
+    {
+      "layer": "融资与私募估值",
+      "name": "前沿模型公司估值/收入倍数",
+      "score": 80,
+      "trend": "up",
+      "cadence": "月度",
+      "current_read": "私募估值高度集中在少数模型公司。估值跳涨若快于毛利和现金流改善，风险上升。",
+      "watch_signals": ["高PS融资", "二级折价扩大", "结构化融资条款复杂化"],
+      "source_suggestions": ["PitchBook", "S&P Global Market Intelligence", "Reuters", "Axios"]
+    },
+    {
+      "layer": "融资与私募估值",
+      "name": "GPU抵押和影子杠杆",
+      "score": 72,
+      "trend": "up",
+      "cadence": "季度",
+      "current_read": "GPU集群、云承诺和项目融资可能形成隐性负债。需求放缓时会放大压力。",
+      "watch_signals": ["设备融资收紧", "抵押品折价", "债务展期困难", "acqui-hire增加"],
+      "source_suggestions": ["私募信贷报告", "公司融资公告", "破产和重组新闻"]
+    },
+    {
+      "layer": "市场集中度",
+      "name": "Mag 7与AI链条权重",
+      "score": 78,
+      "trend": "up",
+      "cadence": "周度",
+      "current_read": "指数对少数AI相关巨头依赖很高。集中度本身不必然崩盘，但会放大回撤。",
+      "watch_signals": ["指数上涨但市场宽度下降", "AI链条相关性上升", "非科技盈利扩散失败"],
+      "source_suggestions": ["S&P 500 factsheet", "Wilshire 5000", "Buffett Indicator", "市场宽度指标"]
+    },
+    {
+      "layer": "竞争与商品化",
+      "name": "开源与小模型替代压力",
+      "score": 52,
+      "trend": "watch",
+      "cadence": "月度",
+      "current_read": "技术进步可能同时扩大应用和压低价格。若企业用低价模型替代前沿API，闭源模型利润池承压。",
+      "watch_signals": ["开源模型逼近闭源", "企业迁移到本地小模型", "多模型平台降低切换成本"],
+      "source_suggestions": ["LMSYS", "Hugging Face", "GitHub", "企业AI架构案例"]
+    },
+    {
+      "layer": "宏观流动性",
+      "name": "利率、美元和信用利差",
+      "score": 62,
+      "trend": "watch",
+      "cadence": "月度",
+      "current_read": "高利率会提高远期现金流折现率，也会压缩数据中心、设备融资和高估值成长股。",
+      "watch_signals": ["长端利率上行", "信用利差扩大", "成长股估值倍数压缩"],
+      "source_suggestions": ["FRED", "Treasury yields", "ICE BofA spreads", "金融条件指数"]
+    },
+    {
+      "layer": "监管与法律",
+      "name": "版权、隐私、反垄断和出口管制",
+      "score": 42,
+      "trend": "watch",
+      "cadence": "月度",
+      "current_read": "监管尚不是当前主要导火索，但可能改变训练数据成本、模型分发和芯片供应。",
+      "watch_signals": ["训练数据诉讼败诉", "跨境数据限制", "芯片出口管制升级", "平台反垄断处罚"],
+      "source_suggestions": ["法院文件", "监管机构公告", "BIS出口管制", "欧盟AI法案执行动态"]
+    }
+  ]
+}

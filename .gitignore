@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+tmp/
+.DS_Store
+Thumbs.db
+
+# Keep baseline outputs in this repo, but ignore ad-hoc local exports.
+output/archive/
+output/tmp/
