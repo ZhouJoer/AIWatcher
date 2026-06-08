@@ -436,7 +436,7 @@ def main():
         topMargin=18 * mm,
         bottomMargin=16 * mm,
         title="AI泡沫观察指标手册",
-        author="Codex",
+        author="AIWatcher",
     )
     doc.addPageTemplates([PageTemplate(id="main", frames=[frame], onPage=on_page)])
     doc.build(build_story())

@@ -4,6 +4,33 @@ AIWatcher 是一个用于跟踪 AI 泡沫和资本开支风险的轻量仪表盘
 
 它不是预测工具，也不是投资建议。它的目标是把一组容易分散在财报、新闻、私募融资、GPU 价格、数据中心和宏观数据里的风险信号，固化成一个可定期更新、可比较的基准仪表盘。
 
+## 开箱即用的 AI Agent 工作流
+
+本仓库的核心是 AI agent 工作流。
+
+任何支持读取仓库文件、检索公开资料、编辑文件和运行本地命令的 AI agent，都可以按下面入口直接执行巡检：
+
+```text
+AGENTS.md
+docs/agent_runbook.md
+prompts/weekly_ai_risk_review.md
+```
+
+推荐 agent 任务：
+
+```text
+按 AGENTS.md 和 prompts/weekly_ai_risk_review.md 执行一次 AI 风险巡检。读取最新公开信息，判断风险是否较基准变化；如有必要，更新 data/ai_risk_metrics.json，运行 python .\tools\ai_risk_dashboard.py，并在 reports/ 下生成本次提醒。
+```
+
+Agent 要做的不是简单渲染，而是：
+
+1. 读取基准和指标 JSON。
+2. 检索最新财报、公司指引、GPU 价格、数据中心、电力、融资和市场集中度变化。
+3. 区分硬数据、强信号、弱信号和推断。
+4. 判断是否需要调整分数。
+5. 更新 JSON 和仪表盘。
+6. 生成一份可读的风险提醒。
+
 ## 当前基准
 
 - 基准日期：2026-06-08
@@ -28,8 +55,6 @@ AIWatcher/
     ai_risk_dashboard.md
     pdf/
       AI泡沫观察指标手册.pdf
-  .github/workflows/
-    render-dashboard.yml              # GitHub Actions 定期渲染仪表盘
 ```
 
 ## 快速开始
@@ -95,15 +120,25 @@ python .\tools\ai_risk_dashboard.py
 + Nvidia 或上游订单放缓
 ```
 
-## 定时任务
+## 定时巡检
 
-仓库包含 GitHub Actions 工作流：
+本仓库不绑定任何特定 agent 或托管地址。推荐在你选择的 agent 环境里配置定时任务，让 agent 按 `AGENTS.md` 执行完整巡检。
 
-- 每周一北京时间 09:00 左右运行一次
-- 也可以手动触发
-- 作用：重新生成仪表盘，并上传生成结果为 workflow artifact
+定时任务提示词见：
 
-如果你希望自动提交更新后的输出文件，可以在 GitHub Actions 里扩展 commit/push 步骤。当前版本默认不自动改仓库内容，避免无意义的定时提交。
+```text
+prompts/weekly_ai_risk_review.md
+docs/scheduled_agent_prompt.md
+```
+
+定时 agent 应该完成：
+
+1. 读取基准和指标。
+2. 检索最新公开资料。
+3. 判断风险是否变化。
+4. 必要时更新 `data/ai_risk_metrics.json`。
+5. 重新生成仪表盘。
+6. 在 `reports/` 下输出本次提醒。
 
 ## 重要说明
 
